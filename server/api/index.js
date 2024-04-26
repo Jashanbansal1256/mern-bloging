@@ -2,10 +2,14 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv'
 import userRoutes from './routes/user.route.js';
-
+import signUpRoutes from './routes/signup.route.js'
 dotenv.config();
 
+//the app define
 const app = express();
+
+//for json result
+app.use(express.json());
 
 
 const port = process.env.PORT;
@@ -26,3 +30,4 @@ mongoose.connect(data).then(()=>{
 })
 
 app.use('/api/route',userRoutes);
+app.use('/api/auth',signUpRoutes);
