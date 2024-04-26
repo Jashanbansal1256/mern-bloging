@@ -31,3 +31,15 @@ mongoose.connect(data).then(()=>{
 
 app.use('/api/route',userRoutes);
 app.use('/api/auth',signUpRoutes);
+
+//create the middleware for error 
+
+app.use((err,req,res,next) =>{
+  const statusCode = err.StatusCode || 500;
+  const message = err.message || 'Internal server error';
+  res.status(statusCode).json({
+    success:false,
+    statusCode,
+    message
+  });
+});
