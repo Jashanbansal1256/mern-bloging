@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import dotenv from 'dotenv'
 import userRoutes from './routes/user.route.js';
 import signUpRoutes from './routes/signup.route.js'
@@ -8,8 +9,13 @@ dotenv.config();
 //the app define
 const app = express();
 
+
+
 //for json result
 app.use(express.json());
+
+// use cores
+app.use(cors());
 
 
 const port = process.env.PORT;
