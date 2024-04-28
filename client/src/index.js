@@ -6,12 +6,15 @@ import { store, persistor } from "./redux/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import reportWebVitals from "./reportWebVitals";
+import ThemeProvider from "./components/ThemeProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <PersistGate persistor={persistor}>
     <Provider store={store}>
-      <App />
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
     </Provider>
   </PersistGate>
 );
