@@ -5,6 +5,7 @@ import dotenv from 'dotenv'
 import userRoutes from './routes/user.route.js';
 import signUpRoutes from './routes/signup.route.js';
 import signInRoutes from './routes/signin.route.js';
+import googleRoutes from './routes/google.route.js';
 dotenv.config();
 
 //the app define
@@ -39,6 +40,8 @@ mongoose.connect(data).then(()=>{
 app.use('/api/route',userRoutes);
 app.use('/api/auth',signUpRoutes);
 app.use('/api/auth',signInRoutes);
+app.use('/api/auth',googleRoutes);
+
 
 //create the middleware for error 
 
