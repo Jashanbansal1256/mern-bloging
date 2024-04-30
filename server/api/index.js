@@ -1,11 +1,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv'
 import userRoutes from './routes/user.route.js';
 import signUpRoutes from './routes/signup.route.js';
 import signInRoutes from './routes/signin.route.js';
 import googleRoutes from './routes/google.route.js';
+import updateRoutes from './routes/update.route.js';
 dotenv.config();
 
 //the app define
@@ -15,6 +17,9 @@ const app = express();
 
 //for json result
 app.use(express.json());
+
+//cookieparser
+app.use(cookieParser());
 
 // use cores
 app.use(cors());
@@ -41,6 +46,7 @@ app.use('/api/route',userRoutes);
 app.use('/api/auth',signUpRoutes);
 app.use('/api/auth',signInRoutes);
 app.use('/api/auth',googleRoutes);
+app.use('/api/route',updateRoutes);
 
 
 //create the middleware for error 
