@@ -8,6 +8,7 @@ import signUpRoutes from './routes/signup.route.js';
 import signInRoutes from './routes/signin.route.js';
 import googleRoutes from './routes/google.route.js';
 import updateRoutes from './routes/update.route.js';
+import deleteRoutes from './routes/delete.route.js';
 import path from 'path';
 
 dotenv.config();
@@ -52,14 +53,19 @@ app.use('/api/auth',signUpRoutes);
 app.use('/api/auth',signInRoutes);
 app.use('/api/auth',googleRoutes);
 app.use('/api/route',updateRoutes);
+app.use('/api/route',deleteRoutes);
 
 
-app.use(express.static(path.join(__dirname, '/client/dist')));
+// app.use(express.static(path.join(__dirname, '/client/dist')));
+app.use(express.static(path.join(__dirname, 'client', 'dist')));
 
+
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+// });
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
-
 
 //create the middleware for error 
 
